@@ -1,0 +1,350 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Segoe UI', sans-serif;
+}
+
+body{
+    height:100vh;
+    background:linear-gradient(135deg,#ff4e88,#ff99c8);
+    overflow:hidden;
+}
+
+.cormorant-garamond {
+  font-family: "Cormorant Garamond", serif;
+  font-optical-sizing: auto;
+  font-weight: 300;
+  font-style: italic;
+}
+
+.cormorant-garamond-bold {
+  font-family: "Cormorant Garamond", serif;
+  font-optical-sizing: auto;
+  font-weight: 700;
+  font-style: italic;
+}
+
+
+
+/* ---------- INITIAL SCREEN ---------- */
+.screen{
+    position:absolute;
+    inset:0;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    flex-direction:column;
+    color:white;
+}
+
+h1{
+    font-size:3.2rem;
+    margin-bottom:40px;
+    text-shadow:0 10px 25px rgba(0,0,0,.25);
+}
+
+.buttons{
+    display:flex;
+    gap:20px;
+    justify-content:center;
+    align-items:center;
+}
+
+button{
+    border:none;
+    padding:18px 45px;
+    font-size:1.4rem;
+    border-radius:50px;
+    cursor:pointer;
+    transition:.25s;
+    font-weight:600;
+    box-shadow:0 8px 20px rgba(0,0,0,.15);
+}
+
+#yes{
+    background:white;
+    color:#ff4e88;
+    font-weight:bold;
+    box-shadow:0 10px 25px rgba(0,0,0,.2);
+    min-width:120px;
+}
+
+#yes:hover{
+    transform:scale(1.05);
+    box-shadow:0 15px 35px rgba(0,0,0,.3);
+}
+
+#yes:active{
+    transform:scale(0.98);
+}
+
+#no{
+    background:#ff2e63;
+    color:white;
+    min-width:120px;
+}
+
+/* ---------- LOVE SCREEN ---------- */
+.love-screen{
+    position:absolute;
+    inset:0;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    opacity:0;
+    pointer-events:none;
+    transition:opacity 1s ease;
+}
+
+.love-screen.show{
+    opacity:1;
+    pointer-events:auto;
+}
+
+.side{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+/* ---------- LETTER ---------- */
+.letter{
+    width:85%;
+    max-width:700px;
+    height:auto;
+    min-height:300px;
+    max-height:88vh;
+    background:#fffef8;
+    border-radius:20px;
+    padding:60px 55px;
+    box-shadow:
+        0 50px 100px rgba(0,0,0,.25),
+        inset 0 1px 0 rgba(255,255,255,.9);
+    position:relative;
+    transform:translateX(120px) rotateY(-20deg);
+    opacity:0;
+    animation:letterOpen 1.4s forwards cubic-bezier(.34,1.56,.64,1);
+    border:1px solid rgba(255,78,136,.1);
+    overflow-y:auto;
+    z-index:10;
+}
+
+@keyframes letterOpen{
+    to{
+        transform:translateX(0) rotateY(0);
+        opacity:1;
+    }
+}
+
+.letter h2{
+    font-size:2.8rem;
+    background:linear-gradient(135deg,#ff4e88,#ff2e63);
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+    background-clip:text;
+    margin-bottom:30px;
+    font-weight:700;
+    letter-spacing:-1px;
+    position:relative;
+    padding-bottom:15px;
+}
+
+.letter h2::after{
+    content:"";
+    position:absolute;
+    bottom:0;
+    left:0;
+    width:80px;
+    height:3px;
+    background:linear-gradient(90deg,#ff4e88,transparent);
+    border-radius:2px;
+}
+
+.letter p{
+    font-size:1.2rem;
+    color:#333;
+    line-height:2;
+    font-family:'Georgia', serif;
+    text-align:justify;
+    text-indent:30px;
+}
+
+/* paper texture effect */
+.letter::before{
+    content:"";
+    position:absolute;
+    inset:0;
+    border-radius:20px;
+    background:
+        repeating-linear-gradient(
+            0deg,
+            transparent,
+            transparent 30px,
+            rgba(255,78,136,.02) 30px,
+            rgba(255,78,136,.02) 31px
+        );
+    pointer-events:none;
+}
+
+/* decorative corner */
+.letter::after{
+    content:"🌹";
+    position:absolute;
+    top:20px;
+    right:25px;
+    font-size:1.5rem;
+    opacity:.6;
+    animation:heartbeat 2s ease-in-out infinite;
+}
+
+@keyframes heartbeat{
+    0%, 100%{ transform:scale(1); }
+    50%{ transform:scale(1.15); }
+}
+
+/* scrollbar personalizado */
+.letter::-webkit-scrollbar{
+    width:8px;
+}
+
+.letter::-webkit-scrollbar-track{
+    background:rgba(255,78,136,.05);
+    border-radius:10px;
+}
+
+.letter::-webkit-scrollbar-thumb{
+    background:linear-gradient(180deg,#ff4e88,#ff99c8);
+    border-radius:10px;
+}
+
+.letter::-webkit-scrollbar-thumb:hover{
+    background:linear-gradient(180deg,#ff2e63,#ff4e88);
+}
+
+/* ---------- PETALS TRANSITION ---------- */
+.petal{
+    position:fixed;
+    border-radius:60% 40% 55% 45% / 50% 60% 40% 55%;
+    opacity:1;
+    pointer-events:none;
+    z-index:999;
+    transform-origin:center;
+    animation:petalBurst 1s ease-out forwards;
+}
+
+@keyframes petalBurst{
+    0%{
+        transform:translate(0,0) rotate(0deg) scale(1);
+        opacity:1;
+    }
+    100%{
+        transform:translate(var(--dx), var(--dy)) rotate(var(--rot)) scale(0);
+        opacity:0;
+    }
+}
+
+/* floating hearts */
+.heart{
+    position:absolute;
+    width:20px;
+    height:20px;
+    background:#fff;
+    transform:rotate(45deg);
+    animation:float 6s linear infinite;
+    opacity:.7;
+    z-index:1;
+}
+
+.heart::before,
+.heart::after{
+    content:"";
+    position:absolute;
+    width:20px;
+    height:20px;
+    background:#fff;
+    border-radius:50%;
+}
+
+.heart::before{ top:-10px; }
+.heart::after{ left:-10px; }
+
+@keyframes float{
+    from{
+        transform:translateY(100vh) rotate(45deg);
+    }
+    to{
+        transform:translateY(-10vh) rotate(45deg);
+    }
+}
+
+/* Responsive design */
+@media (max-width: 768px){
+    h1{
+        font-size:2.5rem;
+        text-align:center;
+        padding:0 20px;
+        margin-bottom:50px;
+    }
+    
+    button{
+        padding:16px 35px;
+        font-size:1.3rem;
+    }
+    
+    .letter{
+        width:92%;
+        padding:35px 25px;
+        border-radius:15px;
+    }
+    
+    .letter h2{
+        font-size:2.2rem;
+        margin-bottom:20px;
+    }
+    
+    .letter p{
+        font-size:1.1rem;
+        line-height:1.9;
+    }
+}
+
+@media (max-width: 480px){
+    h1{
+        font-size:2rem;
+        margin-bottom:40px;
+    }
+    
+    .buttons{
+        flex-direction:column;
+        gap:15px;
+    }
+    
+    button{
+        padding:14px 40px;
+        font-size:1.2rem;
+        width:200px;
+    }
+    
+    .letter{
+        width:95%;
+        padding:30px 22px;
+    }
+    
+    .letter h2{
+        font-size:1.8rem;
+        margin-bottom:15px;
+    }
+    
+    .letter p{
+        font-size:1rem;
+        text-indent:20px;
+        line-height:1.8;
+    }
+    
+    .letter::after{
+        font-size:1.2rem;
+        top:15px;
+        right:20px;
+    }
+}
