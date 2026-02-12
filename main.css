@@ -2,30 +2,16 @@
     margin:0;
     padding:0;
     box-sizing:border-box;
-    font-family:'Segoe UI', sans-serif;
+    font-family:'Cormorant Garamond', serif;
+    font-weight:300;
+    font-style:italic;
 }
 
 body{
     height:100vh;
-    background:linear-gradient(135deg,#ff4e88,#ff99c8);
+    background:linear-gradient(135deg,#c8102e,#e8192c);
     overflow:hidden;
 }
-
-.cormorant-garamond {
-  font-family: "Cormorant Garamond", serif;
-  font-optical-sizing: auto;
-  font-weight: 300;
-  font-style: italic;
-}
-
-.cormorant-garamond-bold {
-  font-family: "Cormorant Garamond", serif;
-  font-optical-sizing: auto;
-  font-weight: 700;
-  font-style: italic;
-}
-
-
 
 /* ---------- INITIAL SCREEN ---------- */
 .screen{
@@ -40,8 +26,12 @@ body{
 
 h1{
     font-size:3.2rem;
+    font-weight:300;
+    font-style:italic;
     margin-bottom:40px;
-    text-shadow:0 10px 25px rgba(0,0,0,.25);
+    color:#fff;
+    text-shadow:0 2px 8px rgba(0,0,0,.35), 0 8px 25px rgba(0,0,0,.2);
+    letter-spacing:0.5px;
 }
 
 .buttons{
@@ -64,15 +54,15 @@ button{
 
 #yes{
     background:white;
-    color:#ff4e88;
-    font-weight:bold;
-    box-shadow:0 10px 25px rgba(0,0,0,.2);
+    color:#c8102e;
+    font-weight:600;
+    box-shadow:0 8px 25px rgba(0,0,0,.35), 0 2px 8px rgba(0,0,0,.2);
     min-width:120px;
 }
 
 #yes:hover{
     transform:scale(1.05);
-    box-shadow:0 15px 35px rgba(0,0,0,.3);
+    box-shadow:0 12px 35px rgba(0,0,0,.45);
 }
 
 #yes:active{
@@ -80,9 +70,11 @@ button{
 }
 
 #no{
-    background:#ff2e63;
+    background:rgba(255,255,255,0.15);
     color:white;
+    border:2px solid rgba(255,255,255,0.7);
     min-width:120px;
+    backdrop-filter:blur(4px);
 }
 
 /* ---------- LOVE SCREEN ---------- */
@@ -139,13 +131,15 @@ button{
 
 .letter h2{
     font-size:2.8rem;
+    font-style:italic;
+    font-weight:300;
     background:linear-gradient(135deg,#ff4e88,#ff2e63);
     -webkit-background-clip:text;
     -webkit-text-fill-color:transparent;
     background-clip:text;
     margin-bottom:30px;
-    font-weight:700;
-    letter-spacing:-1px;
+    font-weight:600;
+    letter-spacing:0.5px;
     position:relative;
     padding-bottom:15px;
 }
@@ -162,10 +156,12 @@ button{
 }
 
 .letter p{
-    font-size:1.2rem;
-    color:#333;
+    font-size:1.25rem;
+    color:#111;
     line-height:2;
-    font-family:'Georgia', serif;
+    font-family:'Cormorant Garamond', Georgia, serif;
+    font-weight:300;
+    font-style:italic;
     text-align:justify;
     text-indent:30px;
 }
@@ -189,7 +185,7 @@ button{
 
 /* decorative corner */
 .letter::after{
-    content:"🌹";
+    content:"💕";
     position:absolute;
     top:20px;
     right:25px;
@@ -249,10 +245,10 @@ button{
     position:absolute;
     width:20px;
     height:20px;
-    background:#fff;
+    background:rgba(255,255,255,0.5);
     transform:rotate(45deg);
     animation:float 6s linear infinite;
-    opacity:.7;
+    opacity:.5;
     z-index:1;
 }
 
@@ -262,7 +258,7 @@ button{
     position:absolute;
     width:20px;
     height:20px;
-    background:#fff;
+    background:rgba(255,255,255,0.5);
     border-radius:50%;
 }
 
